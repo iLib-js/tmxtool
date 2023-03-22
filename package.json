@@ -7,7 +7,7 @@
         "tmxtool": "./src/index.js",
         "tmxtool.bat": "./tmxtool.bat"
     },
-    "description": "Utility to assemble locale data and resource files into single files for webpack to include",
+    "description": "Utility to diff, split, or merge tmx (translation memory) files.",
     "keywords": [
         "internationalization",
         "i18n",
@@ -16,7 +16,8 @@
         "globalization",
         "g11n",
         "data",
-        "locale"
+        "locale",
+        "tmx"
     ],
     "homepage": "https://github.com/iLib-js/tmxtool",
     "bugs": "https://github.com/iLib-js/tmxtool/issues",
@@ -58,6 +59,7 @@
     "devDependencies": {
         "assertextras": "^1.1.0",
         "docdash": "^1.2.0",
+        "ilib-tools-common": "^1.5.0",
         "jsdoc": "^4.0.0",
         "jsdoc-to-markdown": "^7.1.1",
         "nodeunit": "^0.11.3"
@@ -68,7 +70,6 @@
     "dependencies": {
         "ilib-locale": "^1.2.2",
         "ilib-tmx": "^1.0.0",
-        "ilib-tools-common": "^1.5.0",
         "options-parser": "^0.4.0"
     }
 }
