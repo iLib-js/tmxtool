@@ -24,7 +24,7 @@ import diff from '../src/diff.js';
 
 export const testdiff = {
     testDiffNormal: function(test) {
-        test.expect(2);
+        test.expect(13);
 
         diff({
             args: {
@@ -32,7 +32,7 @@ export const testdiff = {
             }
         }, "./test/testfiles/test1.tmx", "./test/testfiles/test2.tmx");
 
-        const tmxdiff = new TMX({
+        const difftmx = new TMX({
             path: "./test/testfiles/diff.tmx"
         });
 
@@ -56,6 +56,67 @@ export const testdiff = {
 
         test.equal(variants[1].string, "vier fumpf sechs");
         test.equal(variants[1].locale, "de-DE");
+
+        test.done();
+    },
+
+
+    testDiffNoDifference: function(test) {
+        test.expect(4);
+
+        diff({
+            args: {
+                outputfile: "./test/testfiles/diff.tmx"
+            }
+        }, "./test/testfiles/test1.tmx", "./test/testfiles/test1.tmx");
+
+        const difftmx = new TMX({
+            path: "./test/testfiles/diff.tmx"
+        });
+
+        test.equal(difftmx.size(), 0);
+
+        const units = difftmx.getTranslationUnits();
+        test.ok(units);
+        test.ok(Array.isArray(units));
+        test.equal(units.length, 0);
+
+        test.done();
+    },
+
+    testDiffWithVariants: function(test) {
+        test.expect(13);
+
+        diff({
+            args: {
+                outputfile: "./test/testfiles/diff.tmx"
+            }
+        }, "./test/testfiles/testvariants1.tmx", "./test/testfiles/testvariants2.tmx");
+
+        const difftmx = new TMX({
+            path: "./test/testfiles/diff.tmx"
+        });
+
+        test.equal(difftmx.size(), 1);
+
+        const units = difftmx.getTranslationUnits();
+        test.ok(units);
+        test.ok(Array.isArray(units));
+        test.equal(units.length, 1);
+
+        test.equal(units[0].source, "baby baby");
+        test.equal(units[0].sourceLocale, "en-US");
+
+        const variants = units[0].getVariants();
+        test.ok(variants);
+        test.ok(Array.isArray(variants));
+        test.equal(variants.length, 2);
+
+        test.equal(variants[0].string, "baby baby");
+        test.equal(variants[0].locale, "en-US");
+
+        test.equal(variants[1].string, "quatre cinq six");
+        test.equal(variants[1].locale, "fr-FR");
 
         test.done();
     },

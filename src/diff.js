@@ -18,6 +18,9 @@
  * limitations under the License.
  */
 
+import fs from 'fs';
+import TMX from 'ilib-tmx';
+
 /**
  * 
  * @param {Object} options options controlling this diff

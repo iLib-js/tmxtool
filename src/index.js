@@ -89,6 +89,8 @@ if (["diff", "split", "merge"].indexOf(command) < 0) {
     process.exit(2);
 }
 
+let file1, file2, file, files, splittype;
+
 // validate arguments
 switch (command) {
     case 'diff':
@@ -97,8 +99,8 @@ switch (command) {
             OptionsParser.help(optionConfig, optionConfig.help.showHelp);
             process.exit(3);
         }
-        const file1 = options.args[1];
-        const file2 = options.args[2];
+        file1 = options.args[1];
+        file2 = options.args[2];
         if (!fs.existsSync(file1)) {
             console.log(`Error: file ${file1} does not exist.`);
             OptionsParser.help(optionConfig, optionConfig.help.showHelp);
@@ -117,7 +119,7 @@ switch (command) {
             OptionsParser.help(optionConfig, optionConfig.help.showHelp);
             process.exit(6);
         }
-        const splittype = options.args[1];
+        splittype = options.args[1];
         if (["target", "source", "datatype", "segtype"].indexOf(splittype) < 0) {
             console.log(`Error: unknown splittype parameter: ${splittype}`);
             OptionsParser.help(optionConfig, optionConfig.help.showHelp);
@@ -128,7 +130,7 @@ switch (command) {
             OptionsParser.help(optionConfig, optionConfig.help.showHelp);
             process.exit(8);
         }
-        const file = options.args[2];
+        file = options.args[2];
         if (!fs.existsSync(file)) {
             console.log(`Error: file ${file} does not exist.`);
             OptionsParser.help(optionConfig, optionConfig.help.showHelp);
@@ -142,7 +144,7 @@ switch (command) {
             OptionsParser.help(optionConfig, optionConfig.help.showHelp);
             process.exit(10);
         }
-        const files = options.args.slice(1);
+        files = options.args.slice(1);
         files.forEach(file => {
             if (!fs.existsSync(file)) {
                 console.log(`Error: file ${file} does not exist.`);
@@ -156,7 +158,7 @@ switch (command) {
 if (!options.opt.quiet) console.log("tmxtool - Copyright (c) 2023 Box, Inc., All rights reserved.");
 
 // normalize the locale specs
-options.opt.locales = options.opt.locales.map(spec => {
+options.opt.locales = options.opt.locales.split(/,/g).map(spec => {
     let loc = new Locale(spec);
     if (!loc.getLanguage()) {
         loc = new Locale("und", loc.getRegion(), loc.getVariant(), loc.getScript());

@@ -68,6 +68,7 @@
     "dependencies": {
         "ilib-locale": "^1.2.2",
         "ilib-tmx": "^1.0.0",
+        "ilib-tools-common": "^1.5.0",
         "options-parser": "^0.4.0"
     }
 }
