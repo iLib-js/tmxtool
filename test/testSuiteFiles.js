@@ -19,7 +19,7 @@
 
 const files = [
     "testdiff.js",
-    //"testassemble.js"
+    "testmerge.js"
 ];
 
 export default files;
