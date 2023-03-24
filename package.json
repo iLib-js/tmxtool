@@ -69,7 +69,7 @@
     },
     "dependencies": {
         "ilib-locale": "^1.2.2",
-        "ilib-tmx": "^1.0.0",
+        "ilib-tmx": "^1.1.0",
         "options-parser": "^0.4.0"
     }
 }
