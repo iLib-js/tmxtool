@@ -1,0 +1,75 @@
+{
+    "name": "tmxtool",
+    "version": "1.0.0",
+    "main": "./src/index.js",
+    "type": "module",
+    "bin": {
+        "tmxtool": "./src/index.js",
+        "tmxtool.bat": "./tmxtool.bat"
+    },
+    "description": "Utility to diff, split, or merge tmx (translation memory) files.",
+    "keywords": [
+        "internationalization",
+        "i18n",
+        "localization",
+        "l10n",
+        "globalization",
+        "g11n",
+        "data",
+        "locale",
+        "tmx"
+    ],
+    "homepage": "https://github.com/iLib-js/tmxtool",
+    "bugs": "https://github.com/iLib-js/tmxtool/issues",
+    "email": "ehoogerbeets@gmail.com",
+    "license": "Apache-2.0",
+    "author": {
+        "name": "Edwin Hoogerbeets",
+        "web": "http://www.translationcircle.com/",
+        "email": "ehoogerbeets@gmail.com"
+    },
+    "contributors": [
+        {
+            "name": "Edwin Hoogerbeets",
+            "email": "ehoogerbeets@gmail.com"
+        },
+        {
+            "name": "Goun Lee",
+            "email": "goun.lee@lge.com"
+        }
+    ],
+    "files": [
+        "src",
+        "tmxtool.bat",
+        "README.md",
+        "LICENSE"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:iLib-js/tmxtool.git"
+    },
+    "scripts": {
+        "dist": "npm pack",
+        "test": "LANG=en_US.UTF8 node test/testSuite.js",
+        "debug": "node --inspect-brk test/testSuite.js",
+        "clean": "git clean -f -d *",
+        "doc": "mkdir -p docs ; jsdoc2md -c jsdoc.json --separators --source src/*.js -m table > docs/ilibAssemble.md ; npm run doc:html",
+        "doc:html": "jsdoc -c jsdoc.json"
+    },
+    "devDependencies": {
+        "assertextras": "^1.1.0",
+        "docdash": "^1.2.0",
+        "ilib-tools-common": "^1.5.0",
+        "jsdoc": "^4.0.0",
+        "jsdoc-to-markdown": "^7.1.1",
+        "nodeunit": "^0.11.3"
+    },
+    "engines": {
+        "node": ">=16.0"
+    },
+    "dependencies": {
+        "ilib-locale": "^1.2.2",
+        "ilib-tmx": "^1.1.0",
+        "options-parser": "^0.4.0"
+    }
+}
