@@ -27,6 +27,7 @@ import path from 'path';
 import TMX from 'ilib-tmx';
 
 import diff from './diff.js';
+import merge from './merge.js';
 
 const optionConfig = {
     help: {
@@ -139,8 +140,8 @@ switch (command) {
         break;
 
     case 'merge':
-        if (options.args.length < 2) {
-            console.log("Error: merge command requires at least one file name parameter");
+        if (options.args.length < 3) {
+            console.log("Error: merge command requires at least two file name parameters");
             OptionsParser.help(optionConfig, optionConfig.help.showHelp);
             process.exit(10);
         }
@@ -172,8 +173,10 @@ switch (command) {
         break;
 
     case 'split':
+        console.log("Split function is not implemented yet");
         break;
 
     case 'merge':
+        merge(options, files);
         break;
 }
