@@ -32,8 +32,8 @@ export function diff(options, file1, file2) {
     const tmx2 = new TMX({path: file2});
     const difftmx = tmx1.diff(tmx2);
     const diffstring = difftmx.serialize();
-    if (options.args.outputfile) {
-        fs.writeFileSync(options.args.outputfile, diffstring, "utf-8");
+    if (options.opt.outputfile) {
+        fs.writeFileSync(options.opt.outputfile, diffstring, "utf-8");
     } else {
         console.log(diffstring);
     }

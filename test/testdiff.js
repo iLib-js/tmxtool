@@ -27,7 +27,7 @@ export const testdiff = {
         test.expect(13);
 
         diff({
-            args: {
+            opt: {
                 outputfile: "./test/testfiles/diff.tmx"
             }
         }, "./test/testfiles/test1.tmx", "./test/testfiles/test2.tmx");
@@ -65,7 +65,7 @@ export const testdiff = {
         test.expect(4);
 
         diff({
-            args: {
+            opt: {
                 outputfile: "./test/testfiles/diff.tmx"
             }
         }, "./test/testfiles/test1.tmx", "./test/testfiles/test1.tmx");
@@ -88,7 +88,7 @@ export const testdiff = {
         test.expect(13);
 
         diff({
-            args: {
+            opt: {
                 outputfile: "./test/testfiles/diff.tmx"
             }
         }, "./test/testfiles/testvariants1.tmx", "./test/testfiles/testvariants2.tmx");
