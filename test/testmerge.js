@@ -27,7 +27,7 @@ export const testmerge = {
         test.expect(22);
 
         merge({
-            args: {
+            opt: {
                 outputfile: "./test/testfiles/merge.tmx"
             }
         }, ["./test/testfiles/test1.tmx", "./test/testfiles/test2.tmx"]);
@@ -78,7 +78,7 @@ export const testmerge = {
         test.expect(13);
 
         merge({
-            args: {
+            opt: {
                 outputfile: "./test/testfiles/merge.tmx"
             }
         }, ["./test/testfiles/test1.tmx", "./test/testfiles/test1.tmx"]);
@@ -115,7 +115,7 @@ export const testmerge = {
         test.expect(24);
 
         merge({
-            args: {
+            opt: {
                 outputfile: "./test/testfiles/merge.tmx"
             }
         }, ["./test/testfiles/testvariants1.tmx", "./test/testfiles/testvariants2.tmx"]);

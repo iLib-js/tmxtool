@@ -37,8 +37,8 @@ export function merge(options, files) {
 
     const mergeTmx = tmxs[0].merge(tmxs.slice(1));
     const mergeString = mergeTmx.serialize();
-    if (options.args.outputfile) {
-        fs.writeFileSync(options.args.outputfile, mergeString, "utf-8");
+    if (options.opt.outputfile) {
+        fs.writeFileSync(options.opt.outputfile, mergeString, "utf-8");
     } else {
         console.log(mergeString);
     }
