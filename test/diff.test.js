@@ -1,7 +1,7 @@
 /*
- * testdiff.js - test the tmxtool diff function
+ * diff.test.js - test the tmxtool diff function
  *
- * Copyright © 2023 JEDLSoft
+ * Copyright © 2023-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,9 +22,9 @@ import { TranslationUnit } from 'ilib-tools-common';
 
 import diff from '../src/diff.js';
 
-export const testdiff = {
-    testDiffNormal: function(test) {
-        test.expect(13);
+describe("testdiff", () => {
+    test("DiffNormal", () => {
+        expect.assertions(13);
 
         diff({
             opt: {
@@ -36,33 +36,31 @@ export const testdiff = {
             path: "./test/testfiles/diff.tmx"
         });
 
-        test.equal(difftmx.size(), 1);
+        expect(difftmx.size()).toBe(1);
 
         const units = difftmx.getTranslationUnits();
-        test.ok(units);
-        test.ok(Array.isArray(units));
-        test.equal(units.length, 1);
+        expect(units).toBeTruthy();
+        expect(Array.isArray(units)).toBeTruthy();
+        expect(units.length).toBe(1);
 
-        test.equal(units[0].source, "baby baby");
-        test.equal(units[0].sourceLocale, "en-US");
+        expect(units[0].source).toBe("baby baby");
+        expect(units[0].sourceLocale).toBe("en-US");
 
         const variants = units[0].getVariants();
-        test.ok(variants);
-        test.ok(Array.isArray(variants));
-        test.equal(variants.length, 2);
+        expect(variants).toBeTruthy();
+        expect(Array.isArray(variants)).toBeTruthy();
+        expect(variants.length).toBe(2);
 
-        test.equal(variants[0].string, "baby baby");
-        test.equal(variants[0].locale, "en-US");
+        expect(variants[0].string).toBe("baby baby");
+        expect(variants[0].locale).toBe("en-US");
 
-        test.equal(variants[1].string, "vier fumpf sechs");
-        test.equal(variants[1].locale, "de-DE");
-
-        test.done();
-    },
+        expect(variants[1].string).toBe("vier fumpf sechs");
+        expect(variants[1].locale).toBe("de-DE");
+    });
 
 
-    testDiffNoDifference: function(test) {
-        test.expect(4);
+    test("DiffNoDifference", () => {
+        expect.assertions(4);
 
         diff({
             opt: {
@@ -74,18 +72,16 @@ export const testdiff = {
             path: "./test/testfiles/diff.tmx"
         });
 
-        test.equal(difftmx.size(), 0);
+        expect(difftmx.size()).toBe(0);
 
         const units = difftmx.getTranslationUnits();
-        test.ok(units);
-        test.ok(Array.isArray(units));
-        test.equal(units.length, 0);
+        expect(units).toBeTruthy();
+        expect(Array.isArray(units)).toBeTruthy();
+        expect(units.length).toBe(0);
+    });
 
-        test.done();
-    },
-
-    testDiffWithVariants: function(test) {
-        test.expect(13);
+    test("DiffWithVariants", () => {
+        expect.assertions(13);
 
         diff({
             opt: {
@@ -97,27 +93,25 @@ export const testdiff = {
             path: "./test/testfiles/diff.tmx"
         });
 
-        test.equal(difftmx.size(), 1);
+        expect(difftmx.size()).toBe(1);
 
         const units = difftmx.getTranslationUnits();
-        test.ok(units);
-        test.ok(Array.isArray(units));
-        test.equal(units.length, 1);
+        expect(units).toBeTruthy();
+        expect(Array.isArray(units)).toBeTruthy();
+        expect(units.length).toBe(1);
 
-        test.equal(units[0].source, "baby baby");
-        test.equal(units[0].sourceLocale, "en-US");
+        expect(units[0].source).toBe("baby baby");
+        expect(units[0].sourceLocale).toBe("en-US");
 
         const variants = units[0].getVariants();
-        test.ok(variants);
-        test.ok(Array.isArray(variants));
-        test.equal(variants.length, 2);
+        expect(variants).toBeTruthy();
+        expect(Array.isArray(variants)).toBeTruthy();
+        expect(variants.length).toBe(2);
 
-        test.equal(variants[0].string, "baby baby");
-        test.equal(variants[0].locale, "en-US");
+        expect(variants[0].string).toBe("baby baby");
+        expect(variants[0].locale).toBe("en-US");
 
-        test.equal(variants[1].string, "quatre cinq six");
-        test.equal(variants[1].locale, "fr-FR");
-
-        test.done();
-    },
-};
+        expect(variants[1].string).toBe("quatre cinq six");
+        expect(variants[1].locale).toBe("fr-FR");
+    });
+});
